@@ -54,13 +54,12 @@ def image_comparison(image_path_list, out_path, image_size=None, zoom_value=1.0,
             for i in range(w):
                 for j in range(h):
                     if is_mode_gray:
-                        if is_mode_gray:
-                            if image_compare_gray(image_compare_base[j][i],
-                                                  img2gray[j][i]):
-                                image_base[j][i] = (diff_color[::-1])
-                        else:
-                            if image_compare_rgb(image_base[j][i], image[j][i]):
-                                image_base[j][i] = (diff_color[::-1])
+                        if image_compare_gray(image_compare_base[j][i],
+                                                img2gray[j][i]):
+                            image_base[j][i] = (diff_color[::-1])
+                    else:
+                        if image_compare_rgb(image_base[j][i], image[j][i]):
+                            image_base[j][i] = (diff_color[::-1])
 
     cv2.imwrite(out_path, image_base)
 
